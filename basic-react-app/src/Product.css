@@ -1,7 +1,7 @@
 .Product{
     border: 2px solid black;
     width: 90vh;
-    height: 15vh;
+    height: auto;
     justify-items: center;
     text-align: center;
     color: black ;

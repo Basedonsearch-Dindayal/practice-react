@@ -1,7 +1,6 @@
 import Product from "./Product.jsx"
 
 function ProductTab(){
-    
     return(
         <>
         <Product/>
