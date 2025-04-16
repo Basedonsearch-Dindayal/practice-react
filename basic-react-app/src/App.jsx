@@ -4,6 +4,7 @@ import ProductTab  from "./ProductTab.jsx";
 function App() {
   return (
     <>
+      <h2>Blockbuster deals | Shop Now</h2>
       <ProductTab/>
     </>
   )
