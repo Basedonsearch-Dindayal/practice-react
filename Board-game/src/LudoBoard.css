@@ -1,0 +1,20 @@
+.outer{
+    background-color: aliceblue;
+    padding: 10px;
+}
+.outer p {
+    color: black;
+}
+.blue{
+    background-color: blue;
+}
+.yellow{
+    background-color: yellow;
+    color: black;
+}
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}
