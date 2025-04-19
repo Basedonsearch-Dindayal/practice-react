@@ -1,0 +1,34 @@
+.outer{
+    background-color: aliceblue;
+    padding: 10px;
+}
+.outer p,h5,h3,h4 {
+    color: black;
+}
+.blue{
+    background-color: blue;
+}
+.yellow{
+    background-color: yellow;
+    color: black;
+}
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}
+.btn {
+    padding: 20px; /* space around the group of buttons */
+  }
+  
+  .btn button {
+    margin-right: 15px; /* space between buttons */
+    padding: 10px 20px;  /* space inside each button */
+  }
+  
+  /* Optional: remove right margin from last button */
+  .btn button:last-child {
+    margin-right: 0;
+  }
+  
