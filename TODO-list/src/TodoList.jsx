@@ -28,6 +28,7 @@ export default function TodoList(){
                     <li key={todo.id}>{todo.task}</li>
                 ))}
             </ul>
+            <button>Delete</button>
         </div>
     )
 }
