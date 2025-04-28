@@ -1,40 +1,82 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
-export default function TodoList(){
-    let [todos, setTodos] = useState([{task:"Sample-Todo", id:uuidv4()}]);
+export default function TodoList() {
+    let [todos, setTodos] = useState([]);
     let [newTodo, setNewTodo] = useState("");
 
     let addNewTask = () => {
-        setTodos([...todos,{task:newTodo, id:uuidv4() }]);
+        setTodos([...todos, { task: newTodo, id: uuidv4(), isDone: false }]);
         setNewTodo("");
     };
+
     let updateTodoValue = (event) => {
-        setNewTodo(event.target.value)
-    }
-    let deleteTodo= (id) => {
-        setTodos((prevTodos) => todos.filter((prevTodos) => prevTodos.id!= id))
-    }
+        setNewTodo(event.target.value);
+    };
 
-    return(
+    let deleteTodo = (id) => {
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    };
+
+    let upperCaseAll = () => {
+        setTodos((todos) =>
+            todos.map((todo) => ({
+                ...todo,
+                task: todo.task.toUpperCase(),
+            }))
+        );
+    };
+
+    let lowerCaseAll = () => {
+        setTodos((todos) =>
+            todos.map((todo) => ({
+                ...todo,
+                task: todo.task.toLowerCase(),
+            }))
+        );
+    };
+
+    let toggleTaskDone = (id) => {
+        setTodos((todos) =>
+            todos.map((todo) =>
+                todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+            )
+        );
+    };
+
+    return (
         <div>
-            <input type="text" placeholder="Add A Task" value={newTodo} onChange={updateTodoValue}></input>
+            <input
+                type="text"
+                placeholder="Add A Task"
+                value={newTodo}
+                onChange={updateTodoValue}
+            />
             <br />
             <br />
+            <button onClick={upperCaseAll}>Uppercase All</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button onClick={addNewTask}>Add Task</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={lowerCaseAll}>Lowercase All</button>
             <br />
-
             <hr />
-            <h4>Tasks Todo</h4>
-            <ul>
-                {todos.map((todo) =>(
-                    <li key={todo.id}>
-                        <span>{todo.task}</span>
-                        &nbsp;&nbsp;&nbsp;
-                        <button onClick ={() => deleteTodo(todo.id)}>delete</button>
-                    </li>
+            <h3>Tasks Todo</h3>
+            <ul style={{ listStyleType: "none", padding: 0 }}>
+                {todos.map((todo) => (
+                    <li key={todo.id} style={{ marginBottom: "10px" }}>
+                    <button onClick={() => toggleTaskDone(todo.id)}style={{ marginRight: "10px" }}>Task_Done</button>
+                    <span 
+                        style={{ 
+                            textDecoration: todo.isDone ? "line-through" : "none", 
+                            marginRight: "10px"}}>
+                        {todo.task}
+                    </span>
+                    <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                </li>
                 ))}
             </ul>
+
         </div>
-    )
+    );
 }
