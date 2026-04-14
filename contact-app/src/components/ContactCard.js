@@ -2,7 +2,7 @@
 // import user from "../images/user.png";
 
 const ContactCard =(props)=>{
-    const {name, email} = props.contact;
+    const {id, name, email} = props.contact;
     return (
         <div className="item">
             <i className="large github middle aligned icon user"></i>
@@ -13,6 +13,7 @@ const ContactCard =(props)=>{
             <i 
                 className="trash alternate outline icon"
                 style={{color: "red", marginTop: "7px", float: "right"}}
+                onClick={()=> props.clickHander(id)}
             ></i>
         </div>
     );
